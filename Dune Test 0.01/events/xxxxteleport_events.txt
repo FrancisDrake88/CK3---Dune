@@ -1,0 +1,11 @@
+namespace = teleport_army_event
+
+event teleport_army_event.00001 = {
+    is_triggered_only = yes
+effect{
+   
+        
+         
+        add_gold = 100 }
+    
+}

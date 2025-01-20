@@ -1,0 +1,31 @@
+﻿teleport_army_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_invite_knights.dds"
+	}
+	desc = teleport_army_decision_desc
+	ai_check_interval = 0
+	decision_group_type = decisions
+	
+	cooldown = { days = 1 }
+
+	is_shown = { is_landless_adventurer = no }
+
+# Teleport all armies of the owner to province ID 1537
+	effect =  {
+		scope:army_in_location = { { limit = { 
+			barony.title_province = { province:1527 } } }
+		}
+		scope:set_army_location = { 
+			barony.title_province = { province:1537 } }
+		
+		add_gold = 100
+	}
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}
