@@ -1,0 +1,53 @@
+decisions:
+    teleport_armies_to_province_1537:
+        picture: decision_army
+        desc: "Teleport all armies to province 1537."
+        is_highlighted: yes
+        ai_goal: no
+
+        potential:
+            always = yes
+
+        allow:
+            always = yes
+
+        effect:
+            scope:current_location = {
+                set_province = 1537
+            }
+            scope:current_war = {
+                every_war_attacker = {
+                    every_army = {
+                        limit = {
+                            is_army_in_combat = no
+                        }
+                        set_army_location = scope:current_location
+                    }
+                }
+                every_war_defender = {
+                    every_army = {
+                        limit = {
+                            is_army_in_combat = no
+                        }
+                        set_army_location = scope:current_location
+                    }
+                }
+            }
+
+        ai_will_do:
+            factor = 0
+
+
+#teleport_armies_to_location_effect = {
+    #scope:current_war ?= {
+       # every_war_$SIDE$ = {
+            #every_army = {
+                #limit = {
+                    #is_army_in_combat = no
+                }
+
+                #set_army_location = scope:current_location
+            }
+        }
+    }
+}

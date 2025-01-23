@@ -1,0 +1,50 @@
+﻿teleport_army_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_invite_knights.dds"
+	}
+	desc = teleport_army_decision_desc
+	ai_check_interval = 0
+	decision_group_type = decisions
+	
+	cooldown = { months = 1 }
+
+	is_shown = { is_landless_adventurer = no }
+
+	effect = {
+        # Set army location to province ID 1596
+        every_army = {
+                owner = {
+                    if = {
+                        limit = {
+                            is_ai = no
+                        }
+                        set_army_location = {
+            province = 1596
+						}
+					}
+				}
+        }
+	}
+
+	cost = {
+		prestige = {
+			value = low_prestige_value
+			# Dynasty Legacies
+			if = {
+				limit = {
+					dynasty ?= { has_dynasty_perk = ep2_activities_legacy_5 }
+					involved_activity ?= { has_activity_type = activity_tournament }
+				}
+				multiply = 0
+			}
+		}
+	}	
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}
